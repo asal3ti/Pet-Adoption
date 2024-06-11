@@ -7,12 +7,16 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+    fontFamily: {
+      "Rubik-Bubbles": ['"Rubik Bubbles"'],
+    },
+    colors: {
+      background: "#B2B7A1",
+      link: "#F0E7E0",
+      logo: "#515031",
+      cloud: "BCAA6E",
+      button: "#D1B6A5",
+      primary: "#EFE8E0",
     },
   },
   plugins: [],
