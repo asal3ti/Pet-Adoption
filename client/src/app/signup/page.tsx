@@ -1,13 +1,14 @@
+"use client";
 // src/app/signup/page.tsx
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 
-const SignUpPage: React.FC = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function SignUpPage() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const router = useRouter();
@@ -16,23 +17,23 @@ const SignUpPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('/api/signup', {
-        method: 'POST',
+      const res = await fetch("/api/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ firstName, lastName, email, password }),
       });
 
       if (res.ok) {
-        setSuccess('Sign up successful!');
-        router.push('/login'); // Redirect to login page
+        setSuccess("Sign up successful!");
+        router.push("/login"); // Redirect to login page
       } else {
         const { message } = await res.json();
         setError(message);
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      setError("An error occurred. Please try again.");
     }
   };
 
@@ -76,18 +77,26 @@ const SignUpPage: React.FC = () => {
             type="password"
             placeholder="Enter your password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: { target: { value: SetStateAction<string> } }) =>
+              setPassword(e.target.value)
+            }
             required
           />
         </Form.Group>
-        {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-        {success && <Alert variant="success" className="mt-3">{success}</Alert>}
+        {error && (
+          <Alert variant="danger" className="mt-3">
+            {error}
+          </Alert>
+        )}
+        {success && (
+          <Alert variant="success" className="mt-3">
+            {success}
+          </Alert>
+        )}
         <Button variant="primary" type="submit" className="mt-3">
           Sign Up
         </Button>
       </Form>
     </Container>
   );
-};
-
-export default SignUpPage;
+}
