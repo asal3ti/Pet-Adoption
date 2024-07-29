@@ -72,7 +72,7 @@ export default function SignUpPage() {
           </Alert>
         )}
         <Button variant="primary" type="submit" className="mt-3">
-          Sign Up
+          Login
         </Button>
       </Form>
     </Container>
