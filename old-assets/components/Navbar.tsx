@@ -29,7 +29,7 @@ const links = [
 ];
 export const Navbar = () => {
   return (
-    <nav className="p-5 flex gap-5 items-center justify-between">
+    <nav className="py-5 px-10 flex xl:flex-row gap-5 items-center justify-between">
       <div>
         <Image
           src="/logo.svg"

@@ -7,9 +7,6 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    fontFamily: {
-      "Rubik-Bubbles": ['"Rubik Bubbles"'],
-    },
     colors: {
       background: "#B2B7A1",
       link: "#F0E7E0",
