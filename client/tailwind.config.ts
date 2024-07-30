@@ -7,13 +7,10 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      background: "#B2B7A1",
-      link: "#F0E7E0",
-      logo: "#515031",
-      cloud: "BCAA6E",
-      button: "#D1B6A5",
-      primary: "#EFE8E0",
+    extend: {
+      colors: {
+        customBg: "#B2B7A1",
+      },
     },
   },
   plugins: [],
