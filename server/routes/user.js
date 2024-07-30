@@ -22,13 +22,13 @@ router.get("/", auth, async (req, res) => {
 router.post("/favorite/:animalId", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    const pet = await Pet.findById(req.params.animalId);
+    const pet = await Pet.findOne({ animalId: req.params.animalId });
 
     if (!pet) {
       return res.status(404).json({ msg: "Pet not found" });
     }
 
-    user.favorites.push(pet);
+    user.favorites.push(pet.animalId);
     await user.save();
     res.json(user.favorites);
   } catch (err) {
@@ -67,28 +67,38 @@ router.delete("/:userId", auth, async (req, res) => {
   }
 });
 
-// PUT api/user/:userId - Update user account
-router.put("/:userId", auth, async (req, res) => {
+// PUT api/user - Update user account
+router.put("/", auth, async (req, res) => {
   const { firstName, lastName, email, phone } = req.body;
 
   const updatedUser = { firstName, lastName, email, phone };
 
   try {
-    let user = await User.findById(req.params.userId);
+    // The authenticated user's ID is available in req.user.id
+    const userId = req.user.id;
+
+    // Find the user by ID
+    let user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
 
-    if (req.user.role !== "admin" && req.user.id !== req.params.userId) {
-      return res.status(403).json({ msg: "Access denied" });
+    // If the user is an admin, allow updates for any user by passing a userId in the request body
+    if (req.user.role === "admin" && req.body.userId) {
+      user = await User.findById(req.body.userId);
+      if (!user) {
+        return res.status(404).json({ msg: "User not found" });
+      }
     }
 
+    // Update the user
     user = await User.findByIdAndUpdate(
-      req.params.userId,
+      user._id,
       { $set: updatedUser },
       { new: true }
     );
+
     res.json(user);
   } catch (err) {
     console.error(err.message);
