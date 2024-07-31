@@ -264,7 +264,7 @@ export default function SignUpPage() {
             )}
             <div className="">
               <p className="text-sm">
-                Does not have an account?{" "}
+                have an account?{" "}
                 <Link
                   href={"/login"}
                   className="underline text-blue-600 hover:text-blue-800"

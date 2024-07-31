@@ -28,7 +28,7 @@ export default function Home() {
             alt="dog and a cat"
             width={750}
             height={900}
-            className="w-[450px] md:w-[100%] md:h-[100%] h-[450px]"
+            className="w-[450px] md:w-[90%] md:h-[90%] h-[450px]"
           />
         </div>
       </section>
