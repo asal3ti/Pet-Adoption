@@ -1,9 +1,16 @@
 require("dotenv").config();
+
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const auth = require("../middleware/auth");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+
+// GET api/auth - Verify if the token is valid
+router.get("/", auth, async (req, res) => {
+  if (req.user) res.status(200).json({ msg: "The token is valid" });
+});
 
 // POST api/auth/signup - Register user
 router.post("/signup", async (req, res) => {
