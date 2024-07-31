@@ -38,15 +38,12 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen bg-customBg flex items-center">
-      <div className="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
-        <div className="py-12 p-10 bg-white rounded-xl">
-          {/* <div className="mb-6 flex justify-center">
-            <img src="/path/to/your-image.png" alt="Sign Up" className="w-32 h-32 object-contain" />
-          </div> */}
-          <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
+      <div className="container mx-auto max-w-sm shadow-md hover:shadow-lg transition duration-300">
+        <div className="py-8 px-6 bg-white rounded-xl">
+          <h1 className="text-xl font-bold mb-4">Sign Up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-6">
-              <label className="mr-4 text-gray-700 font-bold inline-block mb-2" htmlFor="name">Name</label>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-1" htmlFor="name">Name</label>
               <Controller
                 name="name"
                 control={control}
@@ -54,16 +51,16 @@ export default function SignUpPage() {
                 render={({ field }) => (
                   <input
                     type="text"
-                    className="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-black rounded"
+                    className="border bg-gray-100 py-1 px-2 w-full outline-none focus:ring-2 focus:ring-black rounded"
                     placeholder="Enter your name"
                     {...field}
                   />
                 )}
               />
-              {errors.name && <p className="text-red-500 text-sm">{errors.name.message?.toString()}</p>}
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message?.toString()}</p>}
             </div>
-            <div className="mb-6">
-              <label className="mr-4 text-gray-700 font-bold inline-block mb-2" htmlFor="email">Email address</label>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-1" htmlFor="email">Email address</label>
               <Controller
                 name="email"
                 control={control}
@@ -71,16 +68,16 @@ export default function SignUpPage() {
                 render={({ field }) => (
                   <input
                     type="email"
-                    className="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-black rounded"
+                    className="border bg-gray-100 py-1 px-2 w-full outline-none focus:ring-2 focus:ring-black rounded"
                     placeholder="Enter your email"
                     {...field}
                   />
                 )}
               />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email.message?.toString()}</p>}
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message?.toString()}</p>}
             </div>
-            <div className="mb-6">
-              <label className="mr-4 text-gray-700 font-bold inline-block mb-2" htmlFor="password">Password</label>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-1" htmlFor="password">Password</label>
               <Controller
                 name="password"
                 control={control}
@@ -88,16 +85,16 @@ export default function SignUpPage() {
                 render={({ field }) => (
                   <input
                     type="password"
-                    className="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-black rounded"
+                    className="border bg-gray-100 py-1 px-2 w-full outline-none focus:ring-2 focus:ring-black rounded"
                     placeholder="Enter your password"
                     {...field}
                   />
                 )}
               />
-              {errors.password && <p className="text-red-500 text-sm">{errors.password.message?.toString()}</p>}
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message?.toString()}</p>}
             </div>
-            <div className="mb-6">
-              <label className="mr-4 text-gray-700 font-bold inline-block mb-2" htmlFor="passwordConfirm">Confirm Password</label>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-1" htmlFor="passwordConfirm">Confirm Password</label>
               <Controller
                 name="passwordConfirm"
                 control={control}
@@ -105,25 +102,24 @@ export default function SignUpPage() {
                 render={({ field }) => (
                   <input
                     type="password"
-                    className="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-black rounded"
+                    className="border bg-gray-100 py-1 px-2 w-full outline-none focus:ring-2 focus:ring-black rounded"
                     placeholder="Confirm your password"
                     {...field}
                   />
                 )}
               />
-              {errors.passwordConfirm && <p className="text-red-500 text-sm">{errors.passwordConfirm.message?.toString()}</p>} 
-              {errors.passwordConfirm?.type === "manual" && <p className="text-red-500 text-sm">{errors.passwordConfirm.message?.toString()}</p>}
+              {errors.passwordConfirm && <p className="text-red-500 text-sm mt-1">{errors.passwordConfirm.message?.toString()}</p>}
             </div>
             {errors.api && (
-              <div className="text-red-500 text-sm mb-6">
+              <div className="text-red-500 text-sm mb-4">
                 {errors.api.message?.toString()}
               </div>
             )}
-            <button className="w-full mt-6 text-white font-bold bg-black py-3 rounded-md hover:bg-gray-800 transition duration-300" type="submit">
+            <button className="w-full mt-4 text-white font-bold bg-black py-2 rounded-md hover:bg-gray-800 transition duration-300" type="submit">
               Sign Up
             </button>
           </form>
-        </div><div className=""></div>
+        </div>
       </div>
     </div>
   );
