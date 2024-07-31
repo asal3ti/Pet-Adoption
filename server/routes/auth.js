@@ -1,14 +1,20 @@
 require("dotenv").config();
+
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const auth = require("../middleware/auth");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-// POST api/user/signup - Register user
+// GET api/auth - Verify if the token is valid
+router.get("/", auth, async (req, res) => {
+  if (req.user) res.status(200).json({ msg: "The token is valid" });
+});
+
+// POST api/auth/signup - Register user
 router.post("/signup", async (req, res) => {
-  const { userId, firstName, lastName, email, password, phone, role } =
-    req.body;
+  const { firstName, lastName, email, password, phone, role } = req.body;
 
   try {
     let user = await User.findOne({ email });
@@ -17,7 +23,6 @@ router.post("/signup", async (req, res) => {
     }
 
     user = new User({
-      userId,
       firstName,
       lastName,
       email,
@@ -47,7 +52,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// POST api/user/login - Login user
+// POST api/auth/login - Login user
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -65,8 +70,8 @@ router.post("/login", async (req, res) => {
     const payload = { user: { id: user.id, role: user.role } };
     jwt.sign(
       payload,
-      config.get("jwtSecret"),
-      { expiresIn: config.get("jwtExpiration") },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRATION },
       (err, token) => {
         if (err) throw err;
         res.json({ token });

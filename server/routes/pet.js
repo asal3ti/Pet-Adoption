@@ -44,7 +44,15 @@ router.post("/", auth, async (req, res) => {
     res.json(pet);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+
+    if (err.code === 11000) {
+      // Duplicate key error
+      res.status(400).json({
+        msg: `Duplicate key error: Pet with animalId ${err.keyValue.animalId} already exists.`,
+      });
+    } else {
+      res.status(500).send("Server error");
+    }
   }
 });
 
