@@ -111,19 +111,5 @@ export default function Dashboard() {
     </>
   );
 }
-=======
-import ProtectedRoute from "@/components/ProtectedRoute";
 
-const DashboardPage = () => {
-  return (
-    <ProtectedRoute>
-      <div>
-        <h1>Dashboard</h1>
-        {/* Your dashboard content */}
-      </div>
-    </ProtectedRoute>
-  );
-};
 
-export default DashboardPage;
->>>>>>> 455d30a14fc1ff74132995849f9bcccf99be2d83
