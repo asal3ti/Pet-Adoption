@@ -1,9 +1,9 @@
-<<<<<<< HEAD
-"use client"; // Add this directive at the top to make this a client component
-
-import { useState } from 'react';
-import Head from 'next/head';
-import ProfileSettings from '../ProfileSettings/page'; // Ensure this path is correct 
+"use client";
+import { useState } from "react";
+import Head from "next/head";
+import ProfileSettings from "../ProfileSettings/page"; // Ensure this path is correct
+import { ProtectedRoute } from "@/components";
+import Image from "next/image";
 
 export default function Dashboard() {
   const [showProfileSettings, setShowProfileSettings] = useState(false);
@@ -13,7 +13,7 @@ export default function Dashboard() {
   };
 
   return (
-    <>
+    <ProtectedRoute>
       <Head>
         <title>Dashboard</title>
         <meta name="description" content="Dashboard page" />
@@ -21,10 +21,7 @@ export default function Dashboard() {
       </Head>
 
       <body className="font-poppins antialiased">
-        <div
-          id="view"
-          className="h-full w-screen flex flex-row"
-        >
+        <div id="view" className="h-full w-screen flex flex-row">
           <button
             className="p-2 border-2 bg-white rounded-md border-gray-200 shadow-lg text-gray-500 focus:bg-teal-500 focus:outline-none focus:text-white absolute top-0 left-0 sm:hidden"
             // Handle button click logic if needed
@@ -83,8 +80,8 @@ export default function Dashboard() {
                   href="#"
                   className={`text-sm font-medium py-2 px-2 rounded-md transition duration-150 ease-in-out border-b-2 border-gray-300 last:border-b-0 ${
                     showProfileSettings
-                      ? 'bg-[#7E836D] text-white'
-                      : 'text-gray-700 hover:bg-[#7E836D] hover:text-white hover:text-base'
+                      ? "bg-[#7E836D] text-white"
+                      : "text-gray-700 hover:bg-[#7E836D] hover:text-white hover:text-base"
                   }`}
                   onClick={handleProfileClick}
                 >
@@ -96,34 +93,20 @@ export default function Dashboard() {
           <div
             id="main-content"
             className={`flex-1 flex justify-center items-center p-4 ${
-              showProfileSettings ? 'bg-gray-50' : ''
+              showProfileSettings ? "bg-gray-50" : ""
             }`}
           >
             {/* Render ProfileSettings if `showProfileSettings` is true */}
             {showProfileSettings && (
-              <div className="w-full max-w-6xl"> {/* Increased width */}
+              <div className="w-full max-w-6xl">
+                {" "}
+                {/* Increased width */}
                 <ProfileSettings />
               </div>
             )}
           </div>
         </div>
       </body>
-    </>
-  );
-}
-=======
-import ProtectedRoute from "@/components/ProtectedRoute";
-
-const DashboardPage = () => {
-  return (
-    <ProtectedRoute>
-      <div>
-        <h1>Dashboard</h1>
-        {/* Your dashboard content */}
-      </div>
     </ProtectedRoute>
   );
-};
-
-export default DashboardPage;
->>>>>>> 455d30a14fc1ff74132995849f9bcccf99be2d83
+}

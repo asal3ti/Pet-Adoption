@@ -10,6 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         customBg: "#B2B7A1",
+        background: "#B2B7A1",
+        link: "#F0E7E0",
+        logo: "#515031",
+        cloud: "BCAA6E",
+        button: "#D1B6A5",
+        primary: "#EFE8E0",
       },
     },
   },

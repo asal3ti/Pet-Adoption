@@ -29,3 +29,16 @@ export const signup = async (data: CreateUserDTO): Promise<Response> => {
 
   return res;
 };
+
+// Login user
+export const login = async (data: CreateUserDTO): Promise<Response> => {
+  const res = await fetch(`${API_URL}/api/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res;
+};
