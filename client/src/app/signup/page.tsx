@@ -5,8 +5,12 @@ import { useEffect } from "react";
 import { signup } from "@/services/authService";
 import { CreateUserDTO } from "@/dtos";
 import Image from "next/image";
+import { useAtom } from "jotai";
+import { tokenAtom } from "@/store/atoms";
+import Link from "next/link";
 
 export default function SignUpPage() {
+  const [, setToken] = useAtom(tokenAtom);
   const {
     control,
     handleSubmit,
@@ -32,7 +36,10 @@ export default function SignUpPage() {
     try {
       const res = await signup(data);
       if (res.ok) {
-        router.push("/dashboard"); // Redirect to login page
+        const { token } = await res.json();
+        setToken(token);
+        localStorage.setItem("jwt-token", token);
+        router.push("/dashboard"); // Redirect to dashboard page
       } else {
         const { message } = await res.json();
         setError("api", { type: "manual", message });
@@ -66,6 +73,7 @@ export default function SignUpPage() {
       <div className="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300 mt-5">
         <div className="relative flex items-center justify-center mb-8">
           <Image
+            priority
             src={"/cat-signup.png"}
             alt="Cat-signup"
             width={150}
@@ -254,6 +262,17 @@ export default function SignUpPage() {
                 {errors.api.message?.toString()}
               </div>
             )}
+            <div className="">
+              <p className="text-sm">
+                Have an account?{" "}
+                <Link
+                  href={"/login"}
+                  className="underline text-blue-600 hover:text-blue-800"
+                >
+                  Log in
+                </Link>
+              </p>
+            </div>
             <button
               className="w-full mt-6 text-white font-bold bg-black py-3 rounded-md hover:bg-gray-800 transition duration-300"
               type="submit"
