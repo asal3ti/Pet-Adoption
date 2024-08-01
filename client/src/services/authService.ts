@@ -31,7 +31,7 @@ export const signup = async (data: CreateUserDTO): Promise<Response> => {
 
 // Login user api/auth
 export const login = async (data: CreateUserDTO): Promise<Response> => {
-  const res = await fetch(`${API_URL}/api/auth/login`, {
+  const res = await fetch(`${API_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
