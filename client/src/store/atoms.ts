@@ -3,13 +3,10 @@ import { User } from "../types/User";
 import { Pet } from "../types/Pet";
 
 // Atom to store recently visited items
-export const recentlyVisitedAtom = atom<string[]>([]);
+//export const recentlyVisitedAtom = atom<string[]>([]);
 
 // Atom to store the list of pets
 export const petsAtom = atom<Pet[]>([]);
-
-// Atom to store a pet in detail
-export const petDetailAtom = atom<Pet | null>(null);
 
 // Atom to store the list of users (Admin)
 export const usersAtom = atom<User[]>([]);

@@ -18,6 +18,21 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// Get api/user/me Get my account
+router.get("/me", auth, async (req, res) => {
+  try {
+    // Find the user by ID and exclude the password field
+    const user = await User.findById(req.user.id).select("-password");
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // POST api/user/favorite/:animalId - Add to favorites
 router.post("/favorite/:animalId", auth, async (req, res) => {
   try {
