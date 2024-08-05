@@ -1,38 +1,63 @@
 "use client";
-// src/app/signup/page.tsx
-import { SetStateAction, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
+import { useEffect } from "react";
+import { login } from "@/services/authService";
+import Image from "next/image";
+import { useAtom } from "jotai";
+import { tokenAtom } from "@/store/atoms";
+import Link from "next/link";
+import { CreateUserDTO } from "@/dtos";
+
 export default function SignUpPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+  const [, setToken] = useAtom(tokenAtom);
+  const {
+    control,
+    handleSubmit,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm<CreateUserDTO>({
+    mode: "onBlur", // or "onChange" for validation on input change
+  });
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const onSubmit = async (data: CreateUserDTO) => {
     try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
+      const res = await login(data);
       if (res.ok) {
-        setSuccess("Sign up successful!");
-        router.push("/login"); // Redirect to login page
+        const { token } = await res.json();
+        setToken(token);
+        localStorage.setItem("jwt-token", token);
+        router.push("/dashboard"); // Redirect to dashboard page
       } else {
         const { message } = await res.json();
-        setError(message);
+        setError("api", { type: "manual", message });
       }
-    } catch (error) {
-      setError("An error occurred. Please try again.");
+    } catch (error: unknown) {
+      // TypeScript error handling
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "An error occurred. Please try again.";
+      setError("api", {
+        type: "manual",
+        message: errorMessage,
+      });
     }
   };
+
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      const timer = setTimeout(() => {
+        clearErrors();
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(errors), clearErrors]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center">

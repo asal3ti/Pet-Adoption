@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
+export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [token, setToken] = useAtom(tokenAtom);
@@ -42,5 +42,3 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
 
   return <>{children}</>; // Render children if token is present and valid
 };
-
-export default ProtectedRoute;
