@@ -1,25 +1,24 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL + "/auth";
 import { CreateUserDTO } from "@/dtos";
 
-// Verify token
+// Verify token /api/auth
 export const verify = async (token: string): Promise<Response> => {
-  const res = await fetch(`${API_URL}/api/auth`, {
+  const res = await fetch(`${API_URL}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
     },
   });
   return res;
 };
 
-// Sign user
+// Sign user /api/auth/signup
 export const signup = async (data: CreateUserDTO): Promise<Response> => {
   if (!data.role) {
     data.role = "user";
   }
 
-  const res = await fetch(`${API_URL}/api/auth/signup`, {
+  const res = await fetch(`${API_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,9 +29,9 @@ export const signup = async (data: CreateUserDTO): Promise<Response> => {
   return res;
 };
 
-// Login user
+// Login user api/auth
 export const login = async (data: CreateUserDTO): Promise<Response> => {
-  const res = await fetch(`${API_URL}/api/auth/login`, {
+  const res = await fetch(`${API_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

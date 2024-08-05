@@ -24,12 +24,12 @@ export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
         const tokenToVerify = storedToken || token;
         const res = await verify(tokenToVerify);
         if (!res.ok) {
-          router.push("/login"); // Redirect to login page if token is not valid
+          router.push("/"); // Redirect to the landing page if token is not valid
         } else {
           setLoading(false); // Set loading to false if token is valid
         }
       } else {
-        router.push("/login"); // Redirect to login page if no token
+        router.push("/"); // Redirect to the landing page if no token
       }
     };
 

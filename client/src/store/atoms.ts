@@ -8,8 +8,11 @@ export const recentlyVisitedAtom = atom<string[]>([]);
 // Atom to store the list of pets
 export const petsAtom = atom<Pet[]>([]);
 
-// Atom to store the user information
-export const userAtom = atom<User | null>(null);
+// Atom to store a pet in detail
+export const petDetailAtom = atom<Pet | null>(null);
+
+// Atom to store the list of users (Admin)
+export const usersAtom = atom<User[]>([]);
 
 // Atom to store the JWT token
 export const tokenAtom = atom<string>("");
