@@ -1,5 +1,5 @@
 export { Loading } from "./loading/Loading";
-export { NavBar } from "./navbar/Navbar";
+export { NavBar } from "./navbar/NavBar";
 export { DashboardNavBar } from "./navbar/DashboardNavBar";
 export { Footer } from "./footer/Footer";
 export { ProtectedRoute } from "./auth/ProtectedRoute";

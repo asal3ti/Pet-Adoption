@@ -1,9 +1,11 @@
+import { Footer, NavBar } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
+      <NavBar />
       <section className="flex my-5 md:h-[85vh] h-[120vh] justify-center flex-col md:flex-row gap-10 items-center">
         <div className="relative bg-[url('/cloud.svg')] bg-contain bg-no-repeat w-full max-w-2xl bg-center flex justify-center items-center">
           <div className="flex flex-col w-[26rem] h-[30rem] text-center gap-5 -mt-10 items-center z-10 justify-center">
@@ -15,7 +17,7 @@ export default function Home() {
               Companionship Unite in Every Swipe
             </p>
             <Link
-              href={"/signup"}
+              href={"/auth/signup"}
               className="text-2xl p-2 bg-logo text-link w-48 rounded-md hover:bg-logo/80 transition duration-200"
             >
               Find a friend!
@@ -32,6 +34,7 @@ export default function Home() {
           />
         </div>
       </section>
+      <Footer />
     </>
   );
 }

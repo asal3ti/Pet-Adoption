@@ -26,8 +26,6 @@ const LoginPage: React.FC = () => {
 
   const onSubmit = async (data: CreateUserDTO) => {
     try {
-      console.log(data);
-      console.log(errors);
       const res = await login(data);
       if (res.ok) {
         const { token } = await res.json();

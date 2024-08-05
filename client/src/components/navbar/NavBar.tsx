@@ -10,9 +10,9 @@ export const NavBar = () => {
         <Image
           src="/logo.svg"
           alt="Logo pet adoption"
-          className="w-auto h-auto"
           width={180}
           height={60}
+          priority
         />
       </Link>
       <div className=" flex justify-between gap-20 ">

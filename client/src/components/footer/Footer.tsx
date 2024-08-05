@@ -8,6 +8,7 @@ export const Footer = () => {
           alt="Logo pet adoption"
           width={180}
           height={60}
+          priority
         />
       </div>
       <div className="flex flex-col justify-center items-center">
