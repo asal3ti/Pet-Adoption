@@ -1,44 +1,31 @@
+/* 
+  Use pets is going to call the api and then use the 
+  global state until the global state is empty again.
+
+  Every change in the database needs to change the global state too
+
+*/
+
 import useSWR from "swr";
 import { useAtom } from "jotai";
-import { petDetailAtom, petsAtom } from "@/store/atoms";
-const API_URL = process.env.NEXT_PUBLIC_API_URL + "/pets";
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+import { petsAtom } from "@/store/atoms";
+import { getAllPets } from "@/services/petService";
 
 export const usePets = () => {
   const [pets, setPets] = useAtom(petsAtom);
-  // check if pets atom has pets, if not we call the api.
-  const { data, error, mutate } = useSWR(
-    pets.length === 0 ? `${API_URL}` : null,
-    fetcher,
-    {
-      onSuccess: (data) => {
-        setPets(data);
-      },
-    }
-  );
+  const trigger = pets.length === 0 ? "/pets" : null; // Only trigger fetch if needed
+
+  const fetcher = () => getAllPets().then((res) => res.json());
+
+  const { data, error, mutate } = useSWR(trigger, fetcher, {
+    onSuccess: (data) => {
+      setPets(data);
+    },
+  });
+
   return {
     pets: pets || data,
     isLoading: !error && !data && pets.length === 0,
-    isError: error,
-    mutate,
-  };
-};
-
-export const usePet = (animalId: string) => {
-  const [pet, setPet] = useAtom(petDetailAtom);
-  const { data, error, mutate } = useSWR(
-    pet?.animalId === animalId ? `${API_URL}/${animalId}` : null,
-    fetcher,
-    {
-      onSuccess: (data) => {
-        setPet(data);
-      },
-    }
-  );
-  return {
-    pet: pet || data,
-    isLoading: !error && !data && !pet,
     isError: error,
     mutate,
   };

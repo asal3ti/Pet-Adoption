@@ -3,15 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useAtom } from "jotai";
-import { tokenAtom } from "@/store/atoms";
 import { login } from "@/services/authService";
 import { FormInput, withAuth } from "@/components";
 import { CreateUserDTO } from "@/dtos";
 import { useEffect } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 const LoginPage: React.FC = () => {
-  const [, setToken] = useAtom(tokenAtom);
+  const { setAuthToken } = useAuth();
   const router = useRouter();
 
   const {
@@ -29,8 +28,7 @@ const LoginPage: React.FC = () => {
       const res = await login(data);
       if (res.ok) {
         const { token } = await res.json();
-        setToken(token);
-        localStorage.setItem("jwt-token", token);
+        setAuthToken(token);
         router.push("/dashboard");
       } else {
         const { message } = await res.json();

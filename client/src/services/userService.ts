@@ -1,13 +1,24 @@
 import { UpdateUserDTO } from "@/dtos";
-import { tokenAtom } from "@/store/atoms";
 const API_URL = process.env.NEXT_PUBLIC_API_URL + "/user";
 
 // GET api/user - Get all users (Admin only
-export const getAllUsers = async () => {
+export const getAllUsers = async (token: string) => {
   const res = await fetch(`${API_URL}`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${tokenAtom}`,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res;
+};
+
+// Get api/user/me - Get my user
+export const getMyUser = async (token: string) => {
+  const res = await fetch(`${API_URL}/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -15,11 +26,11 @@ export const getAllUsers = async () => {
 };
 
 // POST api/user/favorite/:animalId - Add to favorites
-export const addFavorite = async (animalId: string) => {
+export const addFavorite = async (animalId: string, token: string) => {
   const res = await fetch(`${API_URL}/favorite/${animalId}`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${tokenAtom}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -27,11 +38,11 @@ export const addFavorite = async (animalId: string) => {
 };
 
 // PATCH api/user/favorite/:animalId - Remove from favorites
-export const removeFavorite = async (animalId: string) => {
+export const removeFavorite = async (animalId: string, token: string) => {
   const res = await fetch(`${API_URL}/favorite/${animalId}`, {
     method: "PATCH",
     headers: {
-      Authorization: `Bearer ${tokenAtom}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -39,11 +50,11 @@ export const removeFavorite = async (animalId: string) => {
 };
 
 // DELETE api/user/:userId - Delete user account
-export const deleteUser = async (userId: string) => {
+export const deleteUser = async (userId: string, token: string) => {
   const res = await fetch(`${API_URL}/${userId}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${tokenAtom}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -51,12 +62,12 @@ export const deleteUser = async (userId: string) => {
 };
 
 // PUT api/user - Update user account
-export const updateUser = async (userData: UpdateUserDTO) => {
+export const updateUser = async (userData: UpdateUserDTO, token: string) => {
   const res = await fetch(`${API_URL}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${tokenAtom}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(userData),
   });

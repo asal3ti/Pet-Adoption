@@ -1,5 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL + "/auth";
 import { CreateUserDTO } from "@/dtos";
+const API_URL = process.env.NEXT_PUBLIC_API_URL + "/auth";
 
 // Verify token /api/auth
 export const verify = async (token: string): Promise<Response> => {
