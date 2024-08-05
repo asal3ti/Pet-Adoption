@@ -1,14 +1,12 @@
 "use client";
-
-import { useForm, Controller } from "react-hook-form";
-import { useRouter } from "next/navigation";
-
-import { useEffect } from "react";
-import { login } from "@/services/authService";
-
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { login } from "@/services/authService";
 import { FormInput, withAuth } from "@/components";
 import { CreateUserDTO } from "@/dtos";
+import { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 
 const LoginPage: React.FC = () => {
@@ -57,38 +55,56 @@ const LoginPage: React.FC = () => {
   }, [JSON.stringify(errors), clearErrors]);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center">
-      <div className="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+    <div className="min-h-screen bg-customBg flex items-center">
+      <div className="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300 mt-5">
+        <div className="relative flex items-center justify-center mb-8">
+          <Image
+            priority
+            src={"/cat-login.png"}
+            alt="Cat-login"
+            width={150}
+            height={150}
+            className="absolute"
+          />
+        </div>
         <div className="py-12 p-10 bg-white rounded-xl">
-          <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label className="mr-4 text-gray-700 font-bold inline-block mb-2" htmlFor="email">Email address</label>
-              <input
-                type="email"
-                className="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-6">
-              <label className="mr-4 text-gray-700 font-bold inline-block mb-2" htmlFor="password">Password</label>
-              <input
-                type="password"
-                className="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e: { target: { value: SetStateAction<string> } }) =>
-                  setPassword(e.target.value)
-                }
-                required
-              />
-            </div>
-            {error && (
+          <h1 className="text-2xl font-bold mb-6">Login</h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormInput
+              name="email"
+              control={control}
+              rules={{
+                required: "Email is required",
+                pattern: {
+                  value: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+                  message: "Invalid email address",
+                },
+              }}
+              type="email"
+              placeholder="Enter your email"
+              label="Email address"
+              error={errors.email?.message?.toString()}
+            />
+            <FormInput
+              name="password"
+              control={control}
+              rules={{
+                required: "Password is required",
+                pattern: {
+                  value:
+                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                  message:
+                    "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one number",
+                },
+              }}
+              placeholder="Enter your password"
+              label="Password"
+              type="password"
+              error={errors.password?.message?.toString()}
+            />
+            {errors.api && (
               <div className="text-red-500 text-sm mb-6">
-                {error}
+                {errors.api.message?.toString()}
               </div>
             )}
             <div className="">
