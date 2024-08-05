@@ -1,20 +1,14 @@
 "use client";
-<<<<<<< HEAD:client/src/app/login/page.tsx
+
 import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 import { useEffect } from "react";
 import { login } from "@/services/authService";
-=======
+
 import Link from "next/link";
->>>>>>> 94d831220638a08b9134370ed3b3d2a20da614c9:client/src/app/auth/login/page.tsx
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { login } from "@/services/authService";
 import { FormInput, withAuth } from "@/components";
 import { CreateUserDTO } from "@/dtos";
-import { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 
 const LoginPage: React.FC = () => {
@@ -63,7 +57,6 @@ const LoginPage: React.FC = () => {
   }, [JSON.stringify(errors), clearErrors]);
 
   return (
-<<<<<<< HEAD:client/src/app/login/page.tsx
     <div className="min-h-screen bg-gray-100 flex items-center">
       <div className="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
         <div className="py-12 p-10 bg-white rounded-xl">
@@ -94,69 +87,10 @@ const LoginPage: React.FC = () => {
               />
             </div>
             {error && (
-=======
-    <div className="min-h-screen bg-customBg flex items-center">
-      <div className="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300 mt-5">
-        <div className="relative flex items-center justify-center mb-8">
-          <Image
-            priority
-            src={"/cat-login.png"}
-            alt="Cat-login"
-            width={150}
-            height={150}
-            className="absolute"
-          />
-        </div>
-        <div className="py-12 p-10 bg-white rounded-xl">
-          <h1 className="text-2xl font-bold mb-6">Login</h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <FormInput
-              name="email"
-              control={control}
-              rules={{
-                required: "Email is required",
-                pattern: {
-                  value: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-                  message: "Invalid email address",
-                },
-              }}
-              type="email"
-              placeholder="Enter your email"
-              label="Email address"
-              error={errors.email?.message?.toString()}
-            />
-            <FormInput
-              name="password"
-              control={control}
-              rules={{
-                required: "Password is required",
-                pattern: {
-                  value:
-                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
-                  message:
-                    "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one number",
-                },
-              }}
-              placeholder="Enter your password"
-              label="Password"
-              type="password"
-              error={errors.password?.message?.toString()}
-            />
-            {errors.api && (
->>>>>>> 94d831220638a08b9134370ed3b3d2a20da614c9:client/src/app/auth/login/page.tsx
               <div className="text-red-500 text-sm mb-6">
                 {error}
               </div>
             )}
-<<<<<<< HEAD:client/src/app/login/page.tsx
-            {success && (
-              <div className="text-green-500 text-sm mb-6">
-                {success}
-              </div>
-            )}
-            <button className="w-full mt-6 text-indigo-50 font-bold bg-indigo-600 py-3 rounded-md hover:bg-indigo-500 transition duration-300" type="submit">
-              Sign Up
-=======
             <div className="">
               <p className="text-sm">
                 Does not have an account?{" "}
@@ -173,7 +107,6 @@ const LoginPage: React.FC = () => {
               type="submit"
             >
               Log in
->>>>>>> 94d831220638a08b9134370ed3b3d2a20da614c9:client/src/app/auth/login/page.tsx
             </button>
           </form>
         </div>
