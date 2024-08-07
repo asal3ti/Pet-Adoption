@@ -18,6 +18,7 @@ const SignUpPage: React.FC = () => {
     handleSubmit,
     setError,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm<CreateUserDTO>({
     mode: "onBlur", // or "onChange" for validation on input change
@@ -26,6 +27,7 @@ const SignUpPage: React.FC = () => {
   const onSubmit = async (data: CreateUserDTO) => {
     const { password, passwordConfirm } = data;
 
+    // Check if passwords match
     if (password !== passwordConfirm) {
       setError("passwordConfirm", {
         type: "manual",
@@ -35,17 +37,20 @@ const SignUpPage: React.FC = () => {
     }
 
     try {
-      const res = await signup(data);
-      if (res.ok) {
-        const { token } = await res.json();
-        setAuthToken(token);
-        router.push("/dashboard"); // Redirect to dashboard page
-      } else {
-        const { message } = await res.json();
-        setError("api", { type: "manual", message });
-      }
+      const { token } = await signup(data);
+      setAuthToken(token);
+      router.push("/dashboard"); // Redirect to dashboard page
     } catch (error: unknown) {
-      // TypeScript error handling
+      // Handle unexpected errors
+      reset({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phone: data.phone,
+        email: "",
+        password: "",
+        passwordConfirm: "",
+      });
+
       const errorMessage =
         error instanceof Error
           ? error.message
@@ -65,8 +70,7 @@ const SignUpPage: React.FC = () => {
 
       return () => clearTimeout(timer);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(errors), clearErrors]);
+  }, [errors, clearErrors]);
 
   return (
     <div className="min-h-screen bg-customBg flex items-center">
@@ -136,7 +140,7 @@ const SignUpPage: React.FC = () => {
                 required: "Password is required",
                 pattern: {
                   value:
-                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&_]{8,}$/,
                   message:
                     "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one number",
                 },
@@ -153,7 +157,7 @@ const SignUpPage: React.FC = () => {
                 required: "Password Confirmation is required",
                 pattern: {
                   value:
-                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&_]{8,}$/,
                   message:
                     "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one number",
                 },
@@ -170,7 +174,7 @@ const SignUpPage: React.FC = () => {
             )}
             <div className="">
               <p className="text-sm">
-                have an account?{" "}
+                Have an account?{" "}
                 <Link
                   href={"/auth/login"}
                   className="underline text-blue-600 hover:text-blue-800"
@@ -187,7 +191,6 @@ const SignUpPage: React.FC = () => {
             </button>
           </form>
         </div>
-        <div className=""></div>
       </div>
     </div>
   );

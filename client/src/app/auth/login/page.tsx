@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { login } from "@/services/authService";
 import { FormInput, withAuth } from "@/components";
-import { CreateUserDTO } from "@/dtos";
 import { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { CreateUserDTO } from "@/dtos";
 
 const LoginPage: React.FC = () => {
   const { setAuthToken } = useAuth();
@@ -18,6 +18,7 @@ const LoginPage: React.FC = () => {
     handleSubmit,
     setError,
     clearErrors,
+    reset,
     formState: { errors },
   } = useForm<CreateUserDTO>({
     mode: "onBlur",
@@ -25,21 +26,24 @@ const LoginPage: React.FC = () => {
 
   const onSubmit = async (data: CreateUserDTO) => {
     try {
-      const res = await login(data);
-      if (res.ok) {
-        const { token } = await res.json();
-        setAuthToken(token);
-        router.push("/dashboard");
-      } else {
-        const { message } = await res.json();
-        setError("api", { type: "manual", message });
-      }
+      const { token } = await login(data);
+      setAuthToken(token);
+      router.push("/dashboard");
     } catch (error: unknown) {
+      reset({
+        email: data.email,
+        password: "",
+      });
       const errorMessage =
         error instanceof Error
           ? error.message
           : "An error occurred. Please try again.";
-      setError("api", { type: "manual", message: errorMessage });
+      setError("api", {
+        type: "manual",
+        message: errorMessage,
+      });
+
+      // Reset form values
     }
   };
 
@@ -51,8 +55,7 @@ const LoginPage: React.FC = () => {
 
       return () => clearTimeout(timer);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(errors), clearErrors]);
+  }, [errors, clearErrors]);
 
   return (
     <div className="min-h-screen bg-customBg flex items-center">
@@ -92,7 +95,7 @@ const LoginPage: React.FC = () => {
                 required: "Password is required",
                 pattern: {
                   value:
-                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&_]{8,}$/,
                   message:
                     "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one number",
                 },
@@ -109,7 +112,7 @@ const LoginPage: React.FC = () => {
             )}
             <div className="">
               <p className="text-sm">
-                Does not have an account?{" "}
+                Don't have an account?{" "}
                 <Link
                   href={"/auth/signup"}
                   className="underline text-blue-600 hover:text-blue-800"
