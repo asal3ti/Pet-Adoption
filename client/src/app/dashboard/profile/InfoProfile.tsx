@@ -80,6 +80,7 @@ const InfoProfile = ({ children, title, label, keys, type }: Props) => {
           type={type}
           newPassword={newPassword}
           setPassword={setPassword}
+          key={key}
         />
       ));
     } else {
@@ -89,6 +90,7 @@ const InfoProfile = ({ children, title, label, keys, type }: Props) => {
           type={type}
           newPassword={newPassword}
           setPassword={setPassword}
+          key={keys}
         />
       );
     }
