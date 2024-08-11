@@ -14,7 +14,7 @@ export const usePets = () => {
   const [pets, setPets] = useAtom(petsAtom);
   const trigger = pets.length === 0 ? "/pets" : null; // Only trigger fetch if needed
 
-  const fetcher = () => getAllPets().then((res) => res.json());
+  const fetcher = () => getAllPets();
 
   const { data, error, mutate } = useSWR(trigger, fetcher, {
     onSuccess: (data) => {

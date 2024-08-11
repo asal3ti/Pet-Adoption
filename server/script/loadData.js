@@ -14,8 +14,7 @@ mongoose
     process.exit(1);
   });
 
-const filePath =
-  "/Users/alejandrosilva/Documents/projects/Pet-Adoption/server/Adoptable_Pets.csv"; // Corrected file path
+const filePath = "D:/Pet-Adoption/server/Adoptable_Pets.csv"; // Corrected file path
 const pets = [];
 
 fs.createReadStream(filePath)

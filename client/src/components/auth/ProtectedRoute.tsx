@@ -20,16 +20,11 @@ export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
         setToken(storedToken); // Update the atom state
       }
       // Verify the token if it exists
-      if (storedToken || token) {
-        const tokenToVerify = storedToken || token;
-        const res = await verify(tokenToVerify);
-        if (!res.ok) {
-          router.push("/"); // Redirect to the landing page if token is not valid
-        } else {
-          setLoading(false); // Set loading to false if token is valid
-        }
-      } else {
-        router.push("/"); // Redirect to the landing page if no token
+      try {
+        (await verify(storedToken || token)) && setLoading(false); // Set loading to false if token is valid
+      } catch (error) {
+        console.log(error);
+        router.push("/");
       }
     };
 

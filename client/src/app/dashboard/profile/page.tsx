@@ -1,9 +1,9 @@
 "use client";
 import { Loading } from "@/components";
 import { useMyUser } from "@/hooks/useMyUser";
-import { useState } from "react";
+import InfoProfile from "./InfoProfile";
+
 export default function MyProfile() {
-  const [readOnly, setReadOnly] = useState(true);
   const { user, isLoading, isError } = useMyUser();
 
   function formatPhoneNumber(phoneNumber: string) {
@@ -32,94 +32,87 @@ export default function MyProfile() {
             Account Settings
           </h1>
           <p className="bg-green-900 rounded px-4 py-2 capitalize text-white text-2xl">
-            {user.role}
+            {user?.role}
           </p>
         </div>
-        <hr className="my-4" />
+        {/* <hr className="my-4" />
         <div className="mb-4 p-5">
           <p className="text-2xl text-green-700 font-semibold">Full Name</p>
           <div className="flex gap-2 items-center justify-between">
             <div className="flex gap-2 items-center">
-              <label htmlFor="">Your full name is</label>
+              <label>Your full name is</label>
               <p className={`bg-transparent rounded-md font-bold`}>
-                {user.firstName} {user.lastName}
+                {user?.firstName} {user?.lastName}
               </p>
             </div>
-            <button className=" bg-black text-white px-4 py-2 rounded hover:bg-slate-700">
+            <button
+              type={"button"}
+              className="bg-black text-white px-4 py-2 rounded hover:bg-slate-700"
+            >
               Change
             </button>
           </div>
-        </div>
+        </div> */}
         <hr className="my-4" />
-        <div className="mb-4 p-5">
-          <p className="text-2xl text-green-700 font-semibold">Email Address</p>
-          <div className="flex gap-2 items-center justify-between">
-            <div className="flex gap-2 items-center">
-              <label htmlFor="email">Your email address is</label>
-              <input
-                name="email"
-                id="email"
-                type="email"
-                value={user.email}
-                readOnly={true}
-                className={`bg-transparent rounded-md font-bold ${
-                  !readOnly && "border border-green-800 p-1"
-                }`}
-              />
-            </div>
-            <button className=" bg-black text-white px-4 py-2 rounded hover:bg-slate-700">
-              Change
-            </button>
-          </div>
-        </div>
+        {/* Full Name */}
+        <InfoProfile
+          title="Full Name"
+          label="Your full name is"
+          type="text"
+          keys={["firstName", "lastName"]}
+        >
+          <p className={`bg-transparent rounded-md font-bold`}>
+            {user?.firstName} {user?.lastName}
+          </p>
+        </InfoProfile>
         <hr className="my-4" />
-        <div className="mb-4 p-5">
-          <p className="text-2xl text-green-700 font-semibold">Password</p>
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex gap-2 items-center">
-              <label htmlFor="password">Current password</label>
-              <input
-                name="password"
-                id="password"
-                type="password"
-                value={"**********************"}
-                readOnly={true}
-                className={`bg-transparent rounded-md font-bold ${
-                  !readOnly && "border border-green-800 p-1"
-                }`}
-              />
-            </div>
-            <button className=" bg-black text-white px-4 py-2 rounded hover:bg-slate-700">
-              Change
-            </button>
-          </div>
-        </div>
+
+        {/* Email Address */}
+        <InfoProfile
+          title="Email Address"
+          label="Your email address is"
+          type="email"
+          keys="email"
+        >
+          <p className={`bg-transparent rounded-md font-bold`}>{user.email}</p>
+        </InfoProfile>
         <hr className="my-4" />
-        <div className="mb-4 p-5">
-          <p className="text-2xl text-green-700 font-semibold">Phone Number</p>
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex gap-2 items-center">
-              <label htmlFor="phone">Current phone</label>
-              <p className={`bg-transparent rounded-md font-bold`}>
-                (+1) {formatPhoneNumber(user.phone)}
-              </p>
-              {/* <input
-            name="phone"
-            id="phone"
-            type="phone"
-            value={user.phone}
+
+        {/* Password */}
+        <InfoProfile
+          title="Password"
+          label="Current password"
+          type="password"
+          keys="password"
+        >
+          <input
+            name="password"
+            id="password"
+            type="password"
+            value={"**********************"}
             readOnly={true}
-            className={`bg-transparent rounded-md font-bold ${
-              !readOnly && "border border-green-800 p-1"
-            }`}
-          /> */}
-            </div>
-            <button className=" bg-black text-white px-4 py-2 rounded hover:bg-slate-700">
-              Change
-            </button>
-          </div>
-        </div>
+            className={`bg-transparent rounded-md font-bold 
+            `}
+          />
+        </InfoProfile>
         <hr className="my-4" />
+
+        {/* Phone Number */}
+        <InfoProfile
+          title="Phone Number"
+          label="Current phone"
+          type="text"
+          keys="phone"
+        >
+          {user?.phone && (
+            <p className={`bg-transparent rounded-md font-bold`}>
+              (+1) {formatPhoneNumber(user.phone)}
+            </p>
+          )}
+        </InfoProfile>
+        <hr className="my-4" />
+
+        {/* Delete Account */}
         <div className="mb-4 p-5">
           <p className="text-2xl text-red-700 font-semibold mb-2">
             Delete Account

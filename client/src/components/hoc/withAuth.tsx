@@ -19,16 +19,13 @@ export const withAuth = (WrappedComponent: React.FC) => {
           setToken(storedToken);
         }
 
-        const tokenToVerify = storedToken || token;
-        if (tokenToVerify) {
-          const res = await verify(tokenToVerify);
-          if (res.ok) {
-            router.push("/dashboard");
-            return;
-          }
+        // Verify the token if it exists
+        try {
+          (await verify(storedToken || token)) && router.push("/dashboard"); // Set loading to false if token is valid
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
         }
-
-        setLoading(false);
       };
 
       initializeToken();
