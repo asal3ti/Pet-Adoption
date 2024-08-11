@@ -12,6 +12,9 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.2",
     "@babel/preset-react": "^7.24.7",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^5.3.3",
     "jotai": "^2.9.1",
@@ -19,7 +22,9 @@
     "react": "^18",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18",
+    "react-fontawesome": "^1.7.1",
     "react-hook-form": "^7.52.1",
+    "react-paginate": "^8.2.0",
     "swr": "^2.2.5"
   },
   "devDependencies": {
