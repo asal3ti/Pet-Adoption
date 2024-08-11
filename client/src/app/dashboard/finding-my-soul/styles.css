@@ -11,8 +11,8 @@
 .card {
   display: grid;
   place-items: center;
-  width: 300px; 
-  height: 300px; 
+  width: 280px; 
+  height: 280px; 
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -76,6 +76,7 @@
 .card__content--container p {
   color: var(--white); /* Sets the text color to white */
   font-family: var(--font-text); /* Optional: Ensure the text uses the specified font */
+  font-size: 20px;
 }
 
 .card__title {
@@ -145,7 +146,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 20px; /* Space between cards and pagination */
+  margin-top: 10px; /* Space between cards and pagination */
+  
 }
 
 .pagination-container {
@@ -160,8 +162,8 @@
   background: none; /* Remove the background */
   color: #333; /* Change text color */
   font-size: 30px; /* Increase font size */
-  width: 60px; /* Increase button width */
-  height: 60px; /* Increase button height */
+  width: 40px; /* Increase button width */
+  height: 40px; /* Increase button height */
   display: flex;
   align-items: center;
   justify-content: center;

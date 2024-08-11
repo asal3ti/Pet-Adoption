@@ -3,8 +3,8 @@ import './styles.css';
 
 export default function FindingMySoul() {
   return (
-    <section className="relative w-full flex flex-col items-center overflow-hidden">
-      <div className="relative w-full h-[25vh] flex flex-col items-center justify-center text-white bg-black mb-8">
+    <section className="relative w-full flex flex-col items-center ">
+      <div className="relative w-full h-[29vh] flex flex-col items-center justify-center text-white bg-black mb-8">
         <img
           src="https://www.oceansideanimalhospital.ca/wp-content/uploads/sites/271/2022/04/108-1920x700.png"
           alt="Hero"
