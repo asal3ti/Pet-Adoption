@@ -1,8 +1,7 @@
-"use client";
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw, faRuler, faDroplet, faHeartPulse, faCalendarDays, faShieldDog } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons'; // Import the regular heart icon
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import './modalStyles.css';
 import { Pet } from '@/types/Pet';
 
@@ -17,6 +16,9 @@ interface PetDetailModalProps {
 }
 
 export const PetDetailModal: React.FC<PetDetailModalProps> = ({ onClose, pet }) => {
+  // Default image URL
+  const defaultImageUrl = 'https://www.hopkinsmedicine.org/-/media/feature/noimageavailable.png?h=260&iar=0&mh=260&mw=380&w=380&hash=01CB2D77A5A7FCCDF87DF2ED968048A2';
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -24,7 +26,7 @@ export const PetDetailModal: React.FC<PetDetailModalProps> = ({ onClose, pet }) 
           &#10005; {/* Close icon */}
         </button>
         <div className="modal-left">
-          <img src={pet.url} alt={capitalizeText(pet.petName)} className="modal-image" />
+          <img src={pet.url || defaultImageUrl} alt={capitalizeText(pet.petName)} className="modal-image" />
         </div>
         <div className="modal-right">
           <h2 className="modal-title">
@@ -53,4 +55,3 @@ export const PetDetailModal: React.FC<PetDetailModalProps> = ({ onClose, pet }) 
     </div>
   );
 };
-
