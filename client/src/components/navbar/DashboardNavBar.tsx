@@ -29,7 +29,7 @@ const links = [
 export const DashboardNavBar = ({ children }: Props) => {
   return (
     <section className="h-full flex">
-      <nav className="bg-transparent h-screen fixed shadow-xl px-3 w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out">
+      <nav className="bg-transparent h-screen fixed shadow-xl px-3 w-30 md:w-60 lg:w-80 overflow-x-hidden transition-transform duration-300 ease-in-out">
         <div className="space-y-6 md:space-y-10 mt-10">
           <Link href={"/"}>
             <Image
@@ -72,7 +72,7 @@ export const DashboardNavBar = ({ children }: Props) => {
           </div>
         </div>
       </nav>
-      <div className="ml-30 md:ml-60 lg:ml-60 w-full">{children}</div>
+      <div className="ml-30 md:ml-60 lg:ml-80 w-full">{children}</div>
     </section>
   );
 };

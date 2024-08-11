@@ -3,7 +3,6 @@
   global state until the global state is empty again.
 
   Every change in the database needs to change the global state too
-
 */
 
 import useSWR from "swr";

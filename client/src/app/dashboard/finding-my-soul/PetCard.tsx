@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useState } from 'react';
+import './styles.css';
+import { PetDetailModal } from '@/components';
 
-const PetCard = () => {
+const PetCard: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCardClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevents the card click handler from firing
+    setShowModal(true);
+  };
+
   return (
-    <div className="relative overflow-hidden flex flex-col justify-end w-[420px] h-[500px] bg-[url('http://petharbor.com/get_image.asp?res=DETAIL&id=A518499&location=MONT')] bg-cover bg-no-repeat rounded-md shadow-md">
-      <div className=" flex justify-center w-full h-[150px] bg-opacity-70 bg-green-950 rounded-t-[5rem] absolute hover:bottom-0 -bottom-16 transition-all duration-300">
-        <h1 className="text-2xl text-green-600 font-medium mt-5">Pet name</h1>
-      </div>
-    </div>
+    <>
+      {!showModal && (
+        <div className="card" onClick={handleCardClick}>
+          <img
+            className="card__background"
+            src="http://petharbor.com/get_image.asp?res=DETAIL&id=A518499&location=MONT"
+            alt="Pet"
+          />
+          <div className="card__content">
+            <div className="card__content--container">
+              <h2 className="card__title">DJ</h2>
+              <p>A friendly Turtle looking for a home.</p>
+            </div>
+            <button className="card__button" onClick={handleButtonClick}>
+              see more
+            </button>
+          </div>
+        </div>
+      )}
+      {showModal && <PetDetailModal onClose={handleCloseModal} />}
+    </>
   );
 };
 

@@ -1,3 +1,5 @@
+export { PetDetailModal } from "./modal/PetDetailModal";
+
 export { Loading } from "./loading/Loading";
 export { NavBar } from "./navbar/NavBar";
 export { DashboardNavBar } from "./navbar/DashboardNavBar";
