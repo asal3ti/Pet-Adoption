@@ -26,19 +26,20 @@ export default function MyProfile() {
   if (isError) return <div>Error loading user data</div>;
 
   return (
-    <section className="container p-20">
-      <div className="xl:w-2/3">
+    <section className="container p-20 bg-almond min-h-screen mx-auto">
+      <div className="xl:w-2/3 mx-auto">
         <div className="flex justify-between items-center pe-5">
-          <h1 className="text-3xl text-green-700 font-semibold">
+          <h1 className="text-3xl text-darkGreen-700 font-semibold">
             Account Settings
           </h1>
           <p className="bg-green-900 rounded px-4 py-2 capitalize text-white text-2xl">
+
             {user?.role}
           </p>
         </div>
         {/* <hr className="my-4" />
         <div className="mb-4 p-5">
-          <p className="text-2xl text-green-700 font-semibold">Full Name</p>
+          <p className="text-2xl text-darkGreen-700 font-semibold">Full Name</p>
           <div className="flex gap-2 items-center justify-between">
             <div className="flex gap-2 items-center">
               <label>Your full name is</label>

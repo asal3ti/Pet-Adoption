@@ -5,10 +5,10 @@ import Link from "next/link";
 // const links = [];
 export const NavBar = () => {
   return (
-    <nav className="py-5 px-10 flex xl:flex-row gap-5 items-center justify-between">
-      <Link href={"/"}>
+    <nav className=" sticky top-0 z-50 bg-opacity-30 bg-black backdrop-blur-md  px-10 flex xl:flex-row  h-20 items-center justify-between">
+      <Link color="#eee0d7" href={"/"}>
         <Image
-          src="/logo.svg"
+          src="/logo-footer.svg"
           alt="Logo pet adoption"
           width={180}
           height={60}
@@ -20,7 +20,7 @@ export const NavBar = () => {
           <NavLink href={href} title={title} key={href} />
         ))} */}
       </div>
-      <div className="flex">
+      <div  className="flex">
         <NavLink href="/auth/signup" title="Sign up" />
         <div className="mx-5  border-r-2 border-r-link"></div>
         <NavLink href="/auth/login" title="Log in" />
