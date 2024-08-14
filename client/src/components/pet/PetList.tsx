@@ -51,7 +51,9 @@ const PetList = ({ setDisplay, setType }: Props) => {
       }
 
       console.log("calling");
-      setCurrentPets(petsToDisplay.slice(offset, offset + petsPerPage));
+      setCurrentPets(
+        petsToDisplay.reverse().slice(offset, offset + petsPerPage)
+      );
     };
 
     fetchPets();
@@ -87,16 +89,14 @@ const PetList = ({ setDisplay, setType }: Props) => {
 
         <div className="pet-cards-container">
           {currentPets.length > 0 ? (
-            currentPets
-              .reverse()
-              .map((pet) => (
-                <PetCard
-                  key={pet.animalId}
-                  pet={pet}
-                  setDisplay={setDisplay}
-                  setType={setType}
-                />
-              ))
+            currentPets.map((pet) => (
+              <PetCard
+                key={pet.animalId}
+                pet={pet}
+                setDisplay={setDisplay}
+                setType={setType}
+              />
+            ))
           ) : (
             <div>No pets available for adoption.</div>
           )}
