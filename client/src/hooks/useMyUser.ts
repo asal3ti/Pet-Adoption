@@ -24,6 +24,7 @@ export const useMyUser = () => {
     user: user || data,
     isLoading: !error && !data && !user,
     isError: error,
+    setUser,
     mutate,
   };
 };

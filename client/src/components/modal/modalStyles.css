@@ -80,8 +80,12 @@
   color: red;
 }
 
-.modal-adopt-button:hover {
+.adopt:hover {
   background-color: rgba(232, 70, 162, 0.873);
+}
+
+.remove:hover {
+  background-color: rgba(235, 13, 13, 0.873);
 }
 
 .modal-title {
@@ -92,7 +96,9 @@
   background-color: #504f2dda; /* Background color for the title */
   padding: 7px; /* Add padding to make the background larger */
   border-radius: 10px; /* Rounded corners for the title background */
-  width: calc(94% + 10px); /* Increase width to be slightly wider than the content */
+  width: calc(
+    94% + 10px
+  ); /* Increase width to be slightly wider than the content */
   margin-left: -10px; /* Adjust margin to center the title background */
 }
 .modal-title .fa-paw {
