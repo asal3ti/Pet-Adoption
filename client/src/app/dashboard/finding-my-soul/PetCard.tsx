@@ -23,9 +23,10 @@ const PetCard: React.FC<PetCardProps> = ({ pet }) => {
     setShowModal(true);
   };
 
-  // Function to format pet name
+  // Function to format and trim pet name
   const formatPetName = (name: string) => {
-    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    const trimmedName = name.startsWith('*') ? name.slice(1).trim() : name;
+    return trimmedName.charAt(0).toUpperCase() + trimmedName.slice(1).toLowerCase();
   };
 
   // Function to format breed
@@ -50,10 +51,9 @@ const PetCard: React.FC<PetCardProps> = ({ pet }) => {
     <>
       {!showModal && (
         <div className="card" onClick={handleCardClick}>
-          <img className="card__background" src={pet.url || defaultImageUrl} alt={pet.petName} />
+          <img className="card__background" src={pet.url || defaultImageUrl} alt={formatPetName(pet.petName)} />
           <div className="card__content">
             <div className="card__content--container">
-              {/* <h2 className="card__title">{formatPetName(pet.petName)}</h2> */}
               <p>{formatDescription(pet.animalType, pet.breed)}</p>
             </div>
             <button className="card__button" onClick={handleButtonClick}>

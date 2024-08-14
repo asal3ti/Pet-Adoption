@@ -10,6 +10,12 @@ const capitalizeText = (text: string): string => {
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 };
 
+// Utility function to trim and capitalize pet name
+const trimAndCapitalizePetName = (name: string): string => {
+  const trimmedName = name.startsWith('*') ? name.slice(1).trim() : name;
+  return capitalizeText(trimmedName);
+};
+
 interface PetDetailModalProps {
   onClose: () => void;
   pet: Pet;
@@ -26,11 +32,11 @@ export const PetDetailModal: React.FC<PetDetailModalProps> = ({ onClose, pet }) 
           &#10005; {/* Close icon */}
         </button>
         <div className="modal-left">
-          <img src={pet.url || defaultImageUrl} alt={capitalizeText(pet.petName)} className="modal-image" />
+          <img src={pet.url || defaultImageUrl} alt={trimAndCapitalizePetName(pet.petName)} className="modal-image" />
         </div>
         <div className="modal-right">
           <h2 className="modal-title">
-            <FontAwesomeIcon icon={faPaw} /> {capitalizeText(pet.petName)}
+            <FontAwesomeIcon icon={faPaw} /> {trimAndCapitalizePetName(pet.petName)}
           </h2>
           <p>
             <FontAwesomeIcon icon={faRuler} /> <strong>Size:</strong> {capitalizeText(pet.petSize)}
