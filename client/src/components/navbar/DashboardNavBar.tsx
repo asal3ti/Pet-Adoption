@@ -2,6 +2,7 @@ import Image from "next/image";
 import Logout from "../auth/Logout";
 import Link from "next/link";
 import DashboardLink from "./DashboardLink";
+import DashboardSalut from "./DashboardSalut";
 
 interface Props {
   children: React.ReactNode;
@@ -54,7 +55,7 @@ export const DashboardNavBar = ({ children }: Props) => {
               />
             </Link>
             <div>
-              <h2 className="font-medium text-md text-green-900">Hi Atlas!</h2>
+              <DashboardSalut />
               <p className="text-xs text-gray-600">Welcome back!</p>
             </div>
           </div>
