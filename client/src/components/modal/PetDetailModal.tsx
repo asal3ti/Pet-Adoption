@@ -1,46 +1,55 @@
-import React from "react";
-import Image from "next/image";
-import "./modalStyles.css";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaw, faRuler, faDroplet, faHeartPulse, faCalendarDays, faShieldDog } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import './modalStyles.css';
+import { Pet } from '@/types/Pet';
 
-export const PetDetailModal: React.FC<{ onClose: () => void }> = ({
-  onClose,
-}) => {
+// Utility function to capitalize text
+const capitalizeText = (text: string): string => {
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+};
+
+interface PetDetailModalProps {
+  onClose: () => void;
+  pet: Pet;
+}
+
+export const PetDetailModal: React.FC<PetDetailModalProps> = ({ onClose, pet }) => {
+  // Default image URL
+  const defaultImageUrl = 'https://www.hopkinsmedicine.org/-/media/feature/noimageavailable.png?h=260&iar=0&mh=260&mw=380&w=380&hash=01CB2D77A5A7FCCDF87DF2ED968048A2';
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-icon" onClick={onClose}>
-          &#10005; {/* Close icon, can replace with an SVG or an image */}
+          &#10005; {/* Close icon */}
         </button>
         <div className="modal-left">
-          <Image
-            src="http://www.petharbor.com/get_image.asp?res=DETAIL&id=A518499&location=MONT"
-            alt="Pet"
-            className="modal-image"
-            width={300}
-            height={300}
-          />
+          <img src={pet.url || defaultImageUrl} alt={capitalizeText(pet.petName)} className="modal-image" />
         </div>
         <div className="modal-right">
-          <h2 className="modal-title">DJ</h2>
+          <h2 className="modal-title">
+            <FontAwesomeIcon icon={faPaw} /> {capitalizeText(pet.petName)}
+          </h2>
           <p>
-            <strong>Species:</strong> Turtle / Red-Eared Slider
+            <FontAwesomeIcon icon={faRuler} /> <strong>Size:</strong> {capitalizeText(pet.petSize)}
           </p>
           <p>
-            <strong>Size:</strong> Small
+            <FontAwesomeIcon icon={faDroplet} /> <strong>Color:</strong> {capitalizeText(pet.color)}
           </p>
           <p>
-            <strong>Color:</strong> Green
+            <FontAwesomeIcon icon={faHeartPulse} /> <strong>Age:</strong> {capitalizeText(pet.petAge)}
           </p>
           <p>
-            <strong>Age:</strong> Not Specified
+            <FontAwesomeIcon icon={faCalendarDays} /> <strong>Available Since:</strong> {new Date(pet.inDate).toLocaleDateString()}
           </p>
           <p>
-            <strong>Owner:</strong> OWNER SUR
+            <FontAwesomeIcon icon={faShieldDog} /> <strong>Breed:</strong> {capitalizeText(pet.breed)}
           </p>
-          <p>
-            <strong>Available Since:</strong> 04/27/2024
-          </p>
-          <button className="modal-adopt-button">Adopt</button>
+          <button className="modal-adopt-button">
+            Adopt <FontAwesomeIcon icon={faHeart} />
+          </button>
         </div>
       </div>
     </div>

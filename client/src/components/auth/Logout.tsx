@@ -16,9 +16,10 @@ const Logout = () => {
   };
 
   return (
+    
     <button
       onClick={() => logout()}
-      className="text-left font-medium py-2 px-2 bg-red-500 hover:bg-red-700 text-white text-base rounded-md transition duration-150 ease-in-out border-b-2 border-gray-300 last:border-b-0"
+      className="text-left font-medium py-2 px-2  hover:bg-red-700 text-white text-base rounded-md transition duration-150 ease-in-out border-b-2 border-gray-300 last:border-b-0"
     >
       Log out
     </button>

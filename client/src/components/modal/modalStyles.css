@@ -4,19 +4,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
+  backdrop-filter: blur(5px); /* Blur the background */
 }
 
 .modal-content {
   display: flex;
-  width: 80%;
-  max-width: 1200px;
-  background: rgba(255, 255, 255, 0.841); /* blurred white background */
-  backdrop-filter: blur(px); /* Apply blur effect */
+  width: 1000px; /* Fixed width */
+  background: #a9ae98; /* Slightly transparent white background */
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
   overflow: hidden;
@@ -26,12 +25,18 @@
 .modal-left {
   flex: 1;
   padding: 20px;
+  display: flex;
+  justify-content: flex-start; /* Align image to the left */
+  align-items: center; /* Center image vertically */
+  margin-right: -50px; /* Adjust this value as needed to move image more to the left */
 }
 
 .modal-image {
-  width: 100%;
-  height: auto;
+  width: 400px; /* Fixed width */
+  height: 400px; /* Fixed height */
+  object-fit: cover; /* Ensure image covers the fixed dimensions without distortion */
   border-radius: 10px;
+  border: 0.8px solid #504f2dda;
 }
 
 .modal-right {
@@ -42,20 +47,20 @@
   justify-content: space-between;
 }
 
-.modal-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
 .modal-adopt-button {
+  font-size: 18px;
   align-self: flex-end;
-  background-color: #3e8a12;
+  background-color: rgb(151, 151, 88);
   color: white;
   border: none;
-  padding: 12px 23px;
+  padding: 12px 20px;
   border-radius: 5px;
   cursor: pointer;
-  width: 150px; 
+  width: 140px;
+  margin-right: 32px;
+  margin-bottom: 23px;
+  border-right: 3px solid rgba(255, 255, 255, 0.6); /* White with 50% opacity */
+  border-bottom: 3px solid rgba(255, 255, 255, 0.6); /* White with 50% opacity */
 }
 
 .modal-close-icon {
@@ -66,15 +71,51 @@
   border: none;
   cursor: pointer;
   z-index: 1;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
   font-size: 20px;
   font-weight: bold;
 }
 
 .modal-close-icon:hover {
-  color: red; 
-}
-.modal-adopt-button:hover {
-  background-color: rgb(206, 50, 50); 
+  color: red;
 }
 
+.modal-adopt-button:hover {
+  background-color: rgba(232, 70, 162, 0.873);
+}
+
+.modal-title {
+  color: azure;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 23px;
+  background-color: #504f2dda; /* Background color for the title */
+  padding: 7px; /* Add padding to make the background larger */
+  border-radius: 10px; /* Rounded corners for the title background */
+  width: calc(94% + 10px); /* Increase width to be slightly wider than the content */
+  margin-left: -10px; /* Adjust margin to center the title background */
+}
+.modal-title .fa-paw {
+  margin-right: 10px; /* Space between icon and text */
+  color: #f0efef; /* Icon color, adjust as needed */
+}
+
+.modal-right p {
+  display: flex;
+  align-items: center;
+  font-size: 18px; /* Adjust as needed */
+}
+
+.modal-right p .fa-ruler,
+.modal-right p .fa-droplet,
+.modal-right p .fa-heart-pulse,
+.modal-right p .fa-calendar-days,
+.modal-right p .fa-shield-dog {
+  margin-right: 8px; /* Space between icon and text */
+  color: #333; /* Icon color, adjust as needed */
+}
+
+.modal-adopt-button .fa-heart {
+  margin-left: 8px; /* Space between text and icon */
+  font-size: large;
+}
