@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
+import { Alert, AlertIcon } from "@chakra-ui/react";
 
 interface Props {
   type: "success" | "info" | "warning" | "error" | "loading" | undefined;
