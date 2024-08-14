@@ -2,6 +2,7 @@ import Image from "next/image";
 import Logout from "../auth/Logout";
 import Link from "next/link";
 import DashboardLink from "./DashboardLink";
+import DashboardSalut from "./DashboardSalut";
 
 interface Props {
   children: React.ReactNode;
@@ -9,20 +10,29 @@ interface Props {
 
 const links = [
   {
-    href: "",
+    href: "/",
     title: "Main content",
-  },
-  {
-    href: "/finding-my-soul",
-    title: "Finding my soul",
+    role: ["user", "admin"],
   },
   {
     href: "/waiting-list",
     title: "Waiting list",
+    role: ["user", "admin"],
   },
   {
     href: "/profile",
     title: "My profile",
+    role: ["user", "admin"],
+  },
+  {
+    href: "/add-pet",
+    title: "Add a new friend",
+    role: ["admin"],
+  },
+  {
+    href: "/manage-users",
+    title: "Manage users",
+    role: ["admin"],
   },
 ];
 
@@ -54,20 +64,22 @@ export const DashboardNavBar = ({ children }: Props) => {
               />
             </Link>
             <div>
-              <h2 className="font-medium text-md text-green-900">Hi Atlas!</h2>
+              <DashboardSalut />
               <p className="text-xs text-gray-600">Welcome back!</p>
             </div>
           </div>
           <div className="flex flex-col justify-between h-full gap-8">
             <div className="flex flex-col space-y-2">
-              {links.map(({ href, title }) => (
+              {links.map(({ href, title, role }) => (
                 <DashboardLink
                   href={"/dashboard" + href}
                   title={title}
                   key={href}
+                  role={role}
                 />
               ))}
             </div>
+
             <Logout />
           </div>
         </div>

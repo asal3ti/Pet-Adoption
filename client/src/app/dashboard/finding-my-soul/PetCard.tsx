@@ -69,3 +69,4 @@ const PetCard: React.FC<PetCardProps> = ({ pet }) => {
 };
 
 export default PetCard;
+

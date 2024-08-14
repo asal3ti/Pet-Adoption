@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { UpdateUserDTO } from "@/dtos";
 import InputProfile from "./InputProfile";
 import { changePassword, updateUser } from "@/services/userService";
@@ -20,7 +19,6 @@ const InfoProfile = ({ children, title, label, keys, type }: Props) => {
   const [toggle, setToggle] = useState(false);
   const [newPassword, setPassword] = useState("");
   const [user, setUser] = useAtom(userAtom);
-  const router = useRouter();
 
   const validateForm = () => {
     // Simple validation example based on input keys

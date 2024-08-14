@@ -1,13 +1,18 @@
 "use client";
+import { useMyUser } from "@/hooks/useMyUser";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 interface Props {
   href: string;
   title: string;
+  role: string[];
 }
 
-const DashboardLink = ({ href, title }: Props) => {
+const DashboardLink = ({ href, title, role }: Props) => {
   const pathname = usePathname();
+  const { user } = useMyUser();
+
+  if (role.indexOf(user?.role) === -1) return null;
 
   return (
     <Link

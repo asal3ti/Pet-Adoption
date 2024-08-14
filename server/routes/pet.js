@@ -19,8 +19,8 @@ router.post(
     body("color").notEmpty().withMessage("Color is required"),
     body("breed").notEmpty().withMessage("Breed is required"),
     body("sex")
-      .isIn(["male", "female", "unknown"])
-      .withMessage("Sex must be 'male', 'female', or 'unknown'"),
+      .isIn(["F", "M", "S"])
+      .withMessage("Sex must be 'male', 'female', or 'spayed'"),
     body("url").optional().isURL().withMessage("Invalid URL format"),
     body("crossing")
       .optional()
@@ -34,6 +34,7 @@ router.post(
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log(errors);
       return res.status(400).json({ errors: errors.array() });
     }
 

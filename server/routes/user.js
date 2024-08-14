@@ -60,7 +60,8 @@ router.post(
         return res.status(404).json({ msg: "Pet not found" });
       }
 
-      user.favorites.push(pet.animalId);
+      if (user.favorites.indexOf(pet.animalId) === -1)
+        user.favorites.push(pet.animalId);
       await user.save();
       res.json(user.favorites);
     } catch (err) {
