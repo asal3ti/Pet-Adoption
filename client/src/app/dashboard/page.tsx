@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function FindingMySoul() {
   return (
-    <section className="relative w-full flex flex-col items-center ">
+    <section className="relative w-full flex flex-col items-center bg-almond min-h-screen ">
       <div className="relative w-full h-[29vh] flex flex-col items-center justify-center text-white bg-black">
         <Image
           src="/finding-my-soul.png"

@@ -13,12 +13,17 @@ const config: Config = {
         background: "#B2B7A1",
         link: "#F0E7E0",
         logo: "#515031",
-        cloud: "BCAA6E",
+        logoNav: "#EEE0D7",
+        cloud: "#BCAA6E", 
         button: "#D1B6A5",
         primary: "#EFE8E0",
+        almond: "#DBD8D0",
+        vanilla: "#DACBB5",
+        darkGreen: "#364035"
       },
     },
   },
   plugins: [],
 };
+
 export default config;

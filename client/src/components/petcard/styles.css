@@ -1,0 +1,41 @@
+.pet-card {
+    background: #FEF5F0 ;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.2),
+        0 2px 12px rgb(54, 54, 54);
+    transition:
+        transform 0.7s,
+        box-shadow 0.3s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pet-card img {
+    filter: grayscale(0.5);
+    object-fit: cover;
+    width: 270px;
+    height: 70%;
+    clip-path: ellipse(80% 90% at 50% 0%);
+    transition:
+        transform 1s,
+        clip-path 1.4s,
+        filter 1.2s,
+        scale 1s ease;
+}
+
+.pet-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.3);
+}
+
+.pet-card:hover img {
+    scale: 1.05;
+    clip-path: ellipse(100% 100% at 50% 40%);
+    filter: grayscale(0);
+    transition:
+        clip-path 2.5s,
+        filter 0.5s ease-in,
+        scale 2.5s ease;
+}

@@ -1,0 +1,49 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Arrows */
+  .arrow-down {
+    width: 4em;
+    height: 4em;
+    background-color: transparent;
+    z-index: 80;
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%) rotate(45deg);
+    border-width: 0 0.25em 0.25em 0;
+    border-style: solid;
+    border-color: #6C593D;
+    animation: scrolldown 1.2s ease-in-out infinite 0.15s;
+  }
+  
+  .arrow-down-delay {
+    bottom: 40px;
+    animation-delay: 0s;
+    border-color: #6C593D;
+    width: 4em;
+    height: 4em;
+    
+
+  }
+  
+  /* Keyframes */
+  @keyframes scrolldown {
+    0% {
+      transform: translateY(20%) rotate(45deg);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(0%) rotate(45deg);
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(20%) rotate(45deg);
+      opacity: 0.7;
+    }
+  }
+  

@@ -65,7 +65,7 @@ export const AddPetForm = () => {
     }
   };
   return (
-    <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
+    <form className="mt-8 bg-almond" onSubmit={handleSubmit(onSubmit)}>
       {display && (
         <Alert status={type} textAlign={"center"} className="mb-8">
           <AlertIcon />
@@ -91,10 +91,10 @@ export const AddPetForm = () => {
                 <input
                   type="text"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Animal ID
                 </label>
                 {errors.animalId && (
@@ -118,10 +118,10 @@ export const AddPetForm = () => {
                 <input
                   type="text"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Intake Type
                 </label>
                 {errors.intakeType && (
@@ -147,10 +147,10 @@ export const AddPetForm = () => {
                 <input
                   type="text"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Pet Name
                 </label>
                 {errors.petName && (
@@ -174,10 +174,10 @@ export const AddPetForm = () => {
                 <input
                   type="text"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Animal Type
                 </label>
                 {errors.animalType && (
@@ -235,10 +235,10 @@ export const AddPetForm = () => {
                     <input
                       type="number"
                       {...field}
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                       placeholder=" "
                     />
-                    <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                       Pet Age
                     </label>
                     {errors.petAge && (
@@ -263,7 +263,7 @@ export const AddPetForm = () => {
               <>
                 <select
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                 >
                   <option value="" disabled>
                     Select Pet Size
@@ -272,7 +272,7 @@ export const AddPetForm = () => {
                   <option value="medium">Medium</option>
                   <option value="large">Large</option>
                 </select>
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Pet Size
                 </label>
                 {errors.petSize && (
@@ -296,10 +296,10 @@ export const AddPetForm = () => {
                 <input
                   type="date"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Intake Date
                 </label>
                 {errors.inDate && (
@@ -325,10 +325,10 @@ export const AddPetForm = () => {
                 <input
                   type="text"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Color
                 </label>
                 {errors.color && (
@@ -352,10 +352,10 @@ export const AddPetForm = () => {
                 <input
                   type="text"
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                   placeholder=" "
                 />
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Breed
                 </label>
                 {errors.breed && (
@@ -382,7 +382,7 @@ export const AddPetForm = () => {
               <>
                 <select
                   {...field}
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                 >
                   <option value="" disabled>
                     Select sex
@@ -391,7 +391,7 @@ export const AddPetForm = () => {
                   <option value="M">Male</option>
                   <option value="S">Unknown</option>
                 </select>
-                <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                   Sex
                 </label>
                 {errors.sex && (
@@ -415,10 +415,10 @@ export const AddPetForm = () => {
               <input
                 type="url"
                 {...field}
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
                 placeholder=" "
               />
-              <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 URL (optional)
               </label>
             </>
@@ -449,12 +449,12 @@ export const AddPetForm = () => {
                   const value = e.target.value;
                   field.onChange(value === "Yes"); // Convert "Yes" to `true` and "No" to `false`
                 }}
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-700 peer"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-darkGreen-700 peer"
               >
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
               </select>
-              <label className="peer-focus:font-medium absolute text-xl text-green-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-green-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              <label className="peer-focus:font-medium absolute text-xl text-darkGreen-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-darkGreen-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Crossing (optional)
               </label>
               {errors.crossing && (
