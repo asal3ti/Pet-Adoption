@@ -63,7 +63,7 @@ router.post(
 
       await user.save();
 
-      const payload = { user: { id: user.id, role: user.role } };
+      const payload = { user: { id: user._id, role: user.role } };
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
@@ -106,7 +106,7 @@ router.post(
         return res.status(400).json({ msg: "Invalid Credentials" });
       }
 
-      const payload = { user: { id: user.id, role: user.role } };
+      const payload = { user: { id: user._id, role: user.role } };
       jwt.sign(
         payload,
         process.env.JWT_SECRET,
