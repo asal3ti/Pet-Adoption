@@ -87,14 +87,16 @@ const PetList = ({ setDisplay, setType }: Props) => {
 
         <div className="pet-cards-container">
           {currentPets.length > 0 ? (
-            currentPets.map((pet) => (
-              <PetCard
-                key={pet.animalId}
-                pet={pet}
-                setDisplay={setDisplay}
-                setType={setType}
-              />
-            ))
+            currentPets
+              .reverse()
+              .map((pet) => (
+                <PetCard
+                  key={pet.animalId}
+                  pet={pet}
+                  setDisplay={setDisplay}
+                  setType={setType}
+                />
+              ))
           ) : (
             <div>No pets available for adoption.</div>
           )}

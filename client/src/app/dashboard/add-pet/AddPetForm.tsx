@@ -1,7 +1,9 @@
 "use client";
 import { CreatePetDTO } from "@/dtos";
+import { usePets } from "@/hooks/usePets";
 import { addPet } from "@/services/petService";
 import { tokenAtom } from "@/store/atoms";
+import { Pet } from "@/types/Pet";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 import { useState } from "react";
@@ -21,6 +23,7 @@ export const AddPetForm = () => {
     "success" | "info" | "warning" | "error" | "loading" | undefined
   >();
   const [token] = useAtom(tokenAtom);
+  const { pets, setPets } = usePets();
 
   const onSubmit = async (data: CreatePetDTO) => {
     try {
@@ -35,8 +38,8 @@ export const AddPetForm = () => {
       data.crossing = !!data.crossing;
 
       // Call the addPet service
-      const response = await addPet(data, token);
-
+      const response: Pet = await addPet(data, token);
+      setPets([response, ...pets]);
       setDisplay(true);
       setType("success");
       setTimeout(() => {

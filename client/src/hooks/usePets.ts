@@ -27,5 +27,6 @@ export const usePets = () => {
     isLoading: !error && !data && pets.length === 0,
     isError: error,
     mutate,
+    setPets,
   };
 };

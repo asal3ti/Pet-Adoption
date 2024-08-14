@@ -14,13 +14,16 @@ router.post(
     body("inDate").isISO8601().withMessage("Invalid date format"),
     body("petName").notEmpty().withMessage("Pet name is required"),
     body("animalType").notEmpty().withMessage("Animal type is required"),
-    body("petAge").isNumeric().withMessage("Pet age must be a number"),
+    body("petAge")
+      .optional()
+      .isNumeric()
+      .withMessage("Pet age must be a number"), // Mark as optional
     body("petSize").notEmpty().withMessage("Pet size is required"),
     body("color").notEmpty().withMessage("Color is required"),
     body("breed").notEmpty().withMessage("Breed is required"),
     body("sex")
       .isIn(["F", "M", "S"])
-      .withMessage("Sex must be 'male', 'female', or 'spayed'"),
+      .withMessage("Sex must be 'F', 'M', or 'S'"),
     body("url").optional().isURL().withMessage("Invalid URL format"),
     body("crossing")
       .optional()
@@ -53,6 +56,9 @@ router.post(
       crossing,
     } = req.body;
 
+    // Default petAge to "NO AGE" if not provided
+    const petAgeValue = petAge ? petAge : "NO AGE";
+
     try {
       const newPet = new Pet({
         animalId,
@@ -60,7 +66,7 @@ router.post(
         inDate,
         petName,
         animalType,
-        petAge,
+        petAge: petAgeValue,
         petSize,
         color,
         breed,
